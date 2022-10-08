@@ -15,7 +15,7 @@ const wokeDyno = (options) => {
     let endNap = options.endNap || [0, 0, 0, 1];
     const minutes = (interval / 60000).toFixed(2);
     const minuteString = `${minutes} ${(interval / 60000) === 1 ? "minute" : "minutes"}`;
-    console.log(`wokeDyno called with an interval of ${minuteString}.`);
+    console.log(`wokeDyno: Funcionando en intervalo de  ${minuteString}.`);
     const runTimer = (timerInterval) => {
         const timeoutFn = () => {
             timerInterval = interval; // reset to original interval, after nap
