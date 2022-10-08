@@ -26,7 +26,6 @@ const wokeDyno = (options) => {
                 return runTimer(naptime); // take a nap
             }
             fetch(url)
-                .then(() => console.log(`aaaFetching ${url}. Dyno is woke. \nNext fetch request in ${minuteString}...`))
                 .catch(error => console.log(`Error fetching ${url}: ${error.message}`));
             clearTimeout(timeoutId);
             return runTimer(timerInterval); // run timer with original interval
