@@ -18,19 +18,19 @@ const wokeDyno = (options) => {
     console.log(`wokeDyno called with an interval of ${minuteString}.`);
     const runTimer = (timerInterval) => {
         const timeoutFn = () => {
-            timerInterval = interval;// reset to original interval, after nap
+            timerInterval = interval; // reset to original interval, after nap
             const naptime = timeToNap(startNap, endNap, new Date(Date.now())); // if nap, will return length of nap in ms
-            if (naptime){
+            if (naptime) {
                 const napString = `${(naptime / 60000).toFixed(2)} ${Math.floor(minutes) > 1 ? "minutes" : "minute"}`;
                 console.log(`It's naptime! Napping for ${napString}...`);
                 return runTimer(naptime); // take a nap
             }
             fetch(url)
-            .then(() => console.log(`Fetching ${url}. Dyno is woke. \nNext fetch request in ${minuteString}...`))
-            .catch(error => console.log(`Error fetching ${url}: ${error.message}`));
+                .then(() => console.log(`aaaFetching ${url}. Dyno is woke. \nNext fetch request in ${minuteString}...`))
+                .catch(error => console.log(`Error fetching ${url}: ${error.message}`));
             clearTimeout(timeoutId);
             return runTimer(timerInterval); // run timer with original interval
-            
+
         }
         const timeoutId = setTimeout(timeoutFn, timerInterval);
         return timeoutId;
@@ -38,8 +38,7 @@ const wokeDyno = (options) => {
     const start = () => {
         try {
             return runTimer(interval);
-        }
-        catch (error){
+        } catch (error) {
             console.log("setTimeout error:", error.message);
         }
     }
